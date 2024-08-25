@@ -1,4 +1,5 @@
 // Assessment Module-4 : ATM Banking Application
+// edited
 
 #include <iostream>
 #include <ctime>
@@ -76,7 +77,6 @@ public:
         initial_balace += deposit_amount;
         cout << "Your New Avilable Balance Amount Is Rs. : " << initial_balace << endl;
         cout << "Thank You !" << endl;
-        // cout << "Press any key to return main menu " << endl;
     }
 };
 
@@ -98,13 +98,11 @@ public:
             // It Display sorry message if Enterd withdraw balance is less than initial balance...
             cout << "Insufficient Avilable Balance in Your Account." << endl;
             cout << " Sorry..... " << endl;
-            // cout << "Press any key to continue... " << endl;
         }
         else
         {
             cout << "Your New Avilable Balance Amount Is Rs. : " << initial_balace << endl;
             cout << "Thank You !" << endl;
-            // cout << "Press any key to continue... " << endl;
         }
     }
 };
@@ -117,6 +115,8 @@ int main()
     Initial_Info ii;
     Deposit d;
     Withdrawl w;
+
+    int Is_Continue;
 
     int wlcm_ch;
 
@@ -152,12 +152,16 @@ int main()
                 ii.Display_Ini_Info();
                 cout << " Present Avilable Balance : " << ii.initial_balace << endl;
                 d.Deposit_Process();
+                cout << "Press any key to continue... " << endl;
+                cin >> Is_Continue;
                 break;
 
                 // case 2 do process regarding withdraw balance...
             case 2:
                 ii.Display_Ini_Info();
                 w.Withdrawl_Process();
+                cout << "Press any key to continue... " << endl;
+                cin >> Is_Continue;
                 break;
 
                 // case 3 display avilable balance...
@@ -181,7 +185,8 @@ int main()
             cout << "============================= Thank You ====================================" << endl;
             cout << "You Had Made YOut attempt Which Failed !! No More Attempts Allowed !! Sorry !! " << endl;
             cout << "============================= ATM Account Access ====================================" << endl;
-            // cout << "Press Any Key to continue" << endl;
+            cout << "Press any key to return main menu " << endl;
+            cin >> Is_Continue;
         }
         break;
 
@@ -192,7 +197,8 @@ int main()
         cout << "See Your Bank Representative For Assistance During Bank Operating Hours. " << endl;
         cout << "Thanks For, Your Choice Today...!!" << endl;
         cout << "=====================================================================================" << endl;
-        // cout<<" press any key to continue"<<endl;
+        cout << "Press any key to return main menu " << endl;
+        cin >> Is_Continue;
         break;
 
     default:
