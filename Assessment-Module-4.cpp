@@ -1,4 +1,5 @@
 // Assessment Module-4 : ATM Banking Application
+// edited
 
 #include <iostream>
 #include <ctime>
@@ -115,14 +116,14 @@ int main()
     Deposit d;
     Withdrawl w;
 
-    int Is_Continue;
+    int Is_Continue = 1;
 
     int wlcm_ch;
 
     // It Get choice, User Get Help Or Enter Pin Number for Process...
 
     cout << "press 1 And Then Press Enter To Access Your Account Via Pin Number" << endl;
-    cout << "Press 0 And Press Enter To Get Help";
+    cout << "Press 0 And Press Enter To Get Help : ";
     cin >> wlcm_ch;
 
     int acc_pinNo = 12345;
@@ -143,39 +144,45 @@ int main()
 
         if (acc_pinNo == 12345)
         {
-            sm.choice_Menu();
-            switch (sm.menu_ch)
+            while (sm.menu_ch != 4 && Is_Continue)
             {
-                // case 1 do process regarding deposit balance...
-            case 1:
-                ii.Display_Ini_Info();
-                cout << " Present Avilable Balance : " << ii.initial_balace << endl;
-                d.Deposit_Process();
-                cout << "Press any key to continue... " << endl;
-                cin >> Is_Continue;
-                break;
+                sm.choice_Menu();
+                switch (sm.menu_ch)
+                {
+                        // case 1 do process regarding deposit balance...
+                    case 1:
+                        ii.Display_Ini_Info();
+                        cout << " Present Avilable Balance : " << ii.initial_balace << endl;
+                        d.Deposit_Process();
+                        break;
 
-                // case 2 do process regarding withdraw balance...
-            case 2:
-                ii.Display_Ini_Info();
-                w.Withdrawl_Process();
-                cout << "Press any key to continue... " << endl;
-                cin >> Is_Continue;
-                break;
+                        // case 2 do process regarding withdraw balance...
+                    case 2:
+                        ii.Display_Ini_Info();
+                        w.Withdrawl_Process();
+                        break;
 
-                // case 3 display avilable balance...
-            case 3:
-                cout << "Your Available Balance : " << ii.initial_balace;
-                break;
+                        // case 3 display avilable balance...
+                    case 3:
+                        cout << "Your Available Balance : " << ii.initial_balace;
+                        break;
 
-                // case 4 exit ATM...
-            case 4:
-                cout << "Thanks For Visit ATM!" << endl;
-                break;
+                        // case 4 exit ATM...
+                    case 4:
+                        cout << "Thanks For Visit ATM!" << endl;
+                        break;
 
-            default:
-                cout << "Please Enter Number Between 1 To 4 : ";
-                break;
+                    default:
+                        cout << "Please Enter Number Between 1 To 4 : ";
+                        break;
+                }
+                // It ask User that if they want to any other operation or not...
+                if (sm.menu_ch != 4)
+                {
+                    cout << " Do you want to Continue ? " << endl;
+                    cout << " If yes, Enter 1 if No, Enter 0 : ";
+                    cin >> Is_Continue;
+                }
             }
         }
         else
@@ -183,9 +190,7 @@ int main()
             // Display message if atm attempt is failed...
             cout << "============================= Thank You ====================================" << endl;
             cout << "You Had Made YOut attempt Which Failed !! No More Attempts Allowed !! Sorry !! " << endl;
-            cout << "============================= ATM Account Access ====================================" << endl;
-            cout << "Press any key to return main menu " << endl;
-            cin >> Is_Continue;
+            cout << "============================================================================" << endl;
         }
         break;
 
@@ -196,8 +201,6 @@ int main()
         cout << "See Your Bank Representative For Assistance During Bank Operating Hours. " << endl;
         cout << "Thanks For, Your Choice Today...!!" << endl;
         cout << "=====================================================================================" << endl;
-        cout << "Press any key to return main menu " << endl;
-        cin >> Is_Continue;
         break;
 
     default:
